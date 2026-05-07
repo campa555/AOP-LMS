@@ -1,7 +1,7 @@
 function cfg = default_config()
 
-% This file stores simulation parameters used across the project.
-% It does not generate signals or run algorithms.
+    % This file stores simulation parameters used across the project.
+    % It does not generate signals or run algorithms.
 
     %% General simulation settings
     cfg.sim.numSamples = 10000;
@@ -20,27 +20,26 @@ function cfg = default_config()
     %% Saleh PA model settings
     cfg.pa.gamma = 3;  % Small-signal gain
     cfg.pa.beta = 0.09;  % Transition sharpness
-    cfg.pa.memoryLength = 9;  % PA memory length
+    cfg.pa.memoryLength = 9;  % PA memory length M
 
     %% Noise settings
-    cfg.noise.floorDbm = -100;
+    cfg.noise.floorDbm = -100;  % Noise floor in dBm
 
     %% Nonlinear polynomial model settings
-    cfg.model.nonlinearOrder = 7;  % odd integer (represented as P in the paper)
+    cfg.model.nonlinearOrder = 7;  % Maximum nonlinear order, represented as P in the paper
     cfg.model.numBasis = (cfg.model.nonlinearOrder + 1) / 2;
 
     %% Moment-estimation settings
-    cfg.moments.maxSamples = 55;
+    cfg.moments.numLearningSamples = 55;
     cfg.moments.updateInterval = 3000;
 
     %% LMS settings
-    cfg.lms.stepSize = 1e-3;    
-    cfg.lms.numTaps = 11;  % Represents the effective FIR memory learned by LMS.
+    cfg.lms.stepSize = 1e-3;
+    cfg.lms.numTaps = 11;  % Effective FIR memory used later by LMS
 
     %% LUT settings
     cfg.lut.modOrders = [4 16 64 256];
     cfg.lut.cacheFile = fullfile("results", "lut", "qam_aop_lut.mat");
-    cfg.lut.rebuild = false;
 
     %% Result paths
     cfg.paths.results = "results";
