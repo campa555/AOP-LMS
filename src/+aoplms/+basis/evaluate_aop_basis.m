@@ -16,20 +16,8 @@ function Phi = evaluate_aop_basis(x, coeffs)
     absx2 = abs(x).^2;
 
     for p = 1:K
-
         c = coeffs{p};
-        
-        phi = zeros(N, 1);
-
-        for k = 1:numel(c)
-
-            % Index k corresponds to paper index k-1.
-            phi = phi + c(k) .* (absx2.^(k-1)) .* x;
-
-        end
-
-        Phi(:, p) = phi;
-
+        Phi(:, p) = polyval(fliplr(c), absx2) .* x;
     end
 
 end

@@ -13,10 +13,6 @@ function cfg = default_config()
     cfg.signal.qamOrder = 4;  % Default QAM order
     cfg.signal.qamOrders = [4 16 64 256];
 
-    % Used later for adaptive modulation experiments
-    cfg.signal.qamSchedule.orders = [16 64 4 256 64];
-    cfg.signal.qamSchedule.lengths = [2200 5500 3300 4400 2200];
-
     %% Saleh PA model settings
     cfg.pa.gamma = 3;  % Small-signal gain
     cfg.pa.beta = 0.09;  % Transition sharpness
